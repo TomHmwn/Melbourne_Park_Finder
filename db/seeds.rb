@@ -1,7 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
+# clearing the database
+puts "Cleaning database"
+ParkingBay.destroy_all
+
+# creating parking bays from melbourne open data
+# https://data.melbourne.vic.gov.au/explore/dataset/on-street-parking-bay-sensors/api/
+
+URL = "https://data.melbourne.vic.gov.au/api/records/1.0/search/?dataset=on-street-parking-bay-sensors&q=&rows=500&facet=status&facet=parking_zone&facet=last_updated"
+
+puts "parsing Melbourne parking data..."
+
+html = URI.open(URL).read # open the html of the page
+doc = JSON.parse(html)
+
+puts "Creating Parking Bays..."
+
+doc["records"].each do |record|
+  record["fields"]["status"] == "Present" ? occupied = true : occupied = false
+  ParkingBay.create!(
+    occupied:,
+    longitude: record["fields"]["lon"],
+    latitude: record["fields"]["lat"],
+    sensorLastUpdated: record["fields"]["last_updated"]
+  )
+end
+
+puts "Finished!"

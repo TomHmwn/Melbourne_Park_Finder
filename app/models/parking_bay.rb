@@ -1,0 +1,2 @@
+class ParkingBay < ApplicationRecord
+end
