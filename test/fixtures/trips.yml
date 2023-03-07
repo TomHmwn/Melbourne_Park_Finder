@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timer: 2023-03-07 16:20:48
+  user: one
+  parking_bay: one
+
+two:
+  timer: 2023-03-07 16:20:48
+  user: two
+  parking_bay: two

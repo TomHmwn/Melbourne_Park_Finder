@@ -2,6 +2,7 @@ class ParkingBay < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude,
   :address => :address
   after_validation :reverse_geocode
+  has_one :trip
 
   def coordinates
     [longitude, latitude]
