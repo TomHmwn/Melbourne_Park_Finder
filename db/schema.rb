@@ -25,6 +25,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_045741) do
     t.integer "st_marker_id"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.time "timer"
+    t.bigint "user_id", null: false
+    t.bigint "parking_bay_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parking_bay_id"], name: "index_trips_on_parking_bay_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -37,4 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_045741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "trips", "parking_bays"
+  add_foreign_key "trips", "users"
 end

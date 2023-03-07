@@ -2,8 +2,14 @@ require 'open-uri'
 
 class ParkingBaysController < ApplicationController
   def index
-    # used with db:seed
-    @parking_bays = ParkingBay.where.not(latitude: nil, longitude: nil)
+    # @parking_bays = ParkingBay.where.not(latitude: nil, longitude: nil)
+    @search = params["search"]
+    if @search.present?
+      @address = @search["address"]
+      @parking_bays = ParkingBay.where("address ILIKE ?", "%#{@address}%")
+    else
+      @parking_bays = ParkingBay.all
+    end
 
     # update the sensorLastUpdated attribute for every refresh
     url = 'https://data.melbourne.vic.gov.au/api/records/1.0/search/?dataset=on-street-parking-bay-sensors&q=&rows=500&facet=status&facet=parking_zone&facet=last_updated'
@@ -21,6 +27,10 @@ class ParkingBaysController < ApplicationController
     end
 
     @geojson = build_geojson
+  end
+
+  def show
+    @parking_bay = ParkingBay.find(params[:id])
   end
 
   private
