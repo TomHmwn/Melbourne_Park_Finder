@@ -82,3 +82,7 @@ gem "devise"
 
 # include geocoder
 gem "geocoder"
+
+# include sidekiq for background tasks
+gem "sidekiq"
+gem "sidekiq-failures", "~> 1.0"
