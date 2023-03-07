@@ -79,3 +79,6 @@ gem "simple_form"
 
 # Include devise (sign in, sign up, etc.)
 gem "devise"
+
+# include geocoder
+gem "geocoder"
