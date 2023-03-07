@@ -1,13 +1,25 @@
+require 'open-uri'
+
 class ParkingBaysController < ApplicationController
   def index
+    # used with db:seed
     @parking_bays = ParkingBay.where.not(latitude: nil, longitude: nil)
-    # @markers = @parking_bays.geocoded.map do |parking_bay|
-    #   {
-    #     lat: parking_bay.latitude,
-    #     lng: parking_bay.longitude,
-    #     info_window_html: render_to_string(partial: "info_window", locals: {parking_bay: parking_bay}),
-    #     marker_html: render_to_string(partial: "marker", locals: {parking_bay: parking_bay})
-    #   }
+
+    # update the sensorLastUpdated attribute for every refresh
+    url = 'https://data.melbourne.vic.gov.au/api/records/1.0/search/?dataset=on-street-parking-bay-sensors&q=&rows=500&facet=status&facet=parking_zone&facet=last_updated'
+    html = URI.open(url).read
+    doc = JSON.parse(html)
+    doc['records'].map do |record|
+      matched_localsaved_parking_bay = ParkingBay.find_by(st_marker_id: record['fields']['st_marker_id'])
+      record['fields']['status'] == 'Present' ? incoming_occupied_value = true : incoming_occupied_value = false
+      if incoming_occupied_value != matched_localsaved_parking_bay.occupied
+        ParkingBay.update!(
+          occupied:,
+          sensorLastUpdated: record['fields']['last_updated']
+        )
+      end
+    end
+
     @geojson = build_geojson
   end
 

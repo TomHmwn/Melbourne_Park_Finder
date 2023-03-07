@@ -22,7 +22,8 @@ doc["records"].each do |record|
     occupied:,
     longitude: record["fields"]["lon"],
     latitude: record["fields"]["lat"],
-    sensorLastUpdated: record["fields"]["last_updated"]
+    sensorLastUpdated: record["fields"]["last_updated"],
+    st_marker_id: record["fields"]["st_marker_id"]
   )
 end
 
