@@ -1,6 +1,13 @@
 class ParkingBaysController < ApplicationController
   def index
-    @parking_bays = ParkingBay.where.not(latitude: nil, longitude: nil)
+    # @parking_bays = ParkingBay.where.not(latitude: nil, longitude: nil)
+    @search = params["search"]
+    if @search.present?
+      @address = @search["address"]
+      @parking_bays = ParkingBay.where("address ILIKE ?", "%#{@address}%")
+    else
+      @parking_bays = ParkingBay.all
+    end
     # @markers = @parking_bays.geocoded.map do |parking_bay|
     #   {
     #     lat: parking_bay.latitude,
