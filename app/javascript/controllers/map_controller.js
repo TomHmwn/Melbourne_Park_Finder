@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -128,6 +129,9 @@ export default class extends Controller {
         }.bind(this));
 
         this.#fitMapToMarkers(this.map, this.parkingBaysValue.features);
+
+        this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl }), 'top-left')
       });
   }
   #fitMapToMarkers = (map, features) => {
