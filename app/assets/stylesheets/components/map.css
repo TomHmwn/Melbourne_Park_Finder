@@ -6,3 +6,21 @@
   text-align: center;
   font-family: "Open Sans", sans-serif;
 }
+
+#instructions {
+  position: absolute;
+  margin: 30px;
+  width: 25%;
+  top: 5px;
+  bottom: 40%;
+  padding: 15px;
+  background-color: #fff;
+  overflow-y: scroll;
+  font-family: sans-serif;
+
+}
+
+ol li {
+  list-style: decimal;
+  list-style-position: inside;
+}

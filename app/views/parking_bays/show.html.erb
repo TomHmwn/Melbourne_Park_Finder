@@ -1,4 +1,7 @@
 <h1>Show page for <%= @parking_bay.address %></h1>
-<div style="width: 100%; height: 100vh;"
+<div id="map" style="width: 100%; height: 100vh;"
       data-controller="direction"
-      data-direction-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      data-direction-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<div id="instructions">
+</div>
