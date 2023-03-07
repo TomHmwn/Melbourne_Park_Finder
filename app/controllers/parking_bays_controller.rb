@@ -11,6 +11,10 @@ class ParkingBaysController < ApplicationController
     @geojson = build_geojson
   end
 
+  def show
+    @parking_bay = ParkingBay.find(params[:id])
+  end
+
   private
 
   def build_geojson
