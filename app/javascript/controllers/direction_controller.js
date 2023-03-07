@@ -27,7 +27,11 @@ export default class extends Controller {
     // an arbitrary start will always be the same
     // only the end or destination will change
     const start = [144.947982, -37.818711];
-
+    navigator.geolocation.getCurrentPosition((data) => {
+      console.log(data)
+      // const end = [data.coords.longitude, data.coords.latitude];
+      // getRoute(end);
+    });
     // this is where the code for the next step will go
     // create a function to make a directions request
     async function getRoute(end) {
