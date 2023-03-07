@@ -17,6 +17,8 @@ class ParkingBay < ApplicationRecord
       "properties": {
         "parking_bay_id": id,
         "address": address,
+        "occupied": occupied,
+        "color": occupied ? "red" : "green",
         "info_window": ApplicationController.new.render_to_string(
           partial: "parking_bays/info_window",
           locals: { parking_bay: self }
