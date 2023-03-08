@@ -1,0 +1,7 @@
+.mapboxgl-popup {
+  @apply max-w-sm;
+}
+
+.mapboxgl-popup-content {
+  @apply text-center bg-cyan-200;
+}
