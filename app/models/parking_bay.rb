@@ -8,23 +8,7 @@ class ParkingBay < ApplicationRecord
     [longitude, latitude]
   end
 
-  def to_feature
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": coordinates
-      },
-      "properties": {
-        "parking_bay_id": id,
-        "address": address,
-        "occupied": occupied,
-        "color": occupied ? "red" : "green",
-        "info_window": ApplicationController.new.render_to_string(
-          partial: "parking_bays/info_window",
-          locals: { parking_bay: self }
-        )
-      }
-    }
+  def directions_link
+    "https://www.google.com/maps/dir/?api=1&destination=#{latitude},#{longitude}"
   end
 end

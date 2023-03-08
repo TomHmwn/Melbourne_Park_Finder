@@ -15,10 +15,8 @@ export default class extends Controller {
 
       this.map = new mapboxgl.Map({
       container: this.element,
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
       style: 'mapbox://styles/mapbox/dark-v11',
-      // center: [-103.5917, 40.6699],
-      // Long, Lat
+      // center: [-103.5917, 40.6699], // [longitude, latitude]
       center: [144.947982, -37.8187],
       zoom: 3
       });
