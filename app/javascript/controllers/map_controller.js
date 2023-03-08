@@ -140,7 +140,20 @@ export default class extends Controller {
         this.#fitMapToMarkers(this.map, this.parkingBaysValue.features);
 
         this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-          mapboxgl: mapboxgl }), 'top-left')
+          mapboxgl: mapboxgl }), 'top-left');
+          // Add geolocate control to the map.
+
+        this.map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: {
+            enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+          })
+        );
       });
   }
   #fitMapToMarkers = (map, features) => {
