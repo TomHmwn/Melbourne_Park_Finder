@@ -5,35 +5,29 @@ import mapboxgl from 'mapbox-gl';
 export default class extends Controller {
 
   static values = {
-    apiKey: String
+    apiKey: String,
+    parkingBay: Object,
   }
 
   connect() {
-    // console.log("direction controller connected")
     mapboxgl.accessToken = this.apiKeyValue
 
     const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [144.947982, -37.818711], // starting position
+      container: this.element,
+      style: 'mapbox://styles/mapbox/dark-v11',
+      center: [this.parkingBayValue.longitude, this.parkingBayValue.latitude],
       zoom: 15
     });
-    // set the bounds of the map
-    // const bounds = [
-    //   [145.447982, -38.818711],
-    //   [143.947982, -37.318711]
-    // ];
-    // map.setMaxBounds(bounds);
-    // an arbitrary start will always be the same
-    // only the end or destination will change
-    const start = [144.947982, -37.818711];
 
-    // this is where the code for the next step will go
+    // console.log(this.parkingBayValue)
+    const end = [this.parkingBayValue.longitude, this.parkingBayValue.latitude];
+    navigator.geolocation.getCurrentPosition((data) => {
+      const start = [data.coords.longitude, data.coords.latitude];
+      getRoute(start, end);
+    });
+
     // create a function to make a directions request
-    async function getRoute(end) {
-      // make a directions request using cycling profile
-      // an arbitrary start will always be the same
-      // only the end or destination will change
+    async function getRoute(start, end) {
       const query = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
         { method: 'GET' }
@@ -73,6 +67,7 @@ export default class extends Controller {
           }
         });
       }
+
       const instructions = document.getElementById('instructions');
       const steps = data.legs[0].steps;
 
@@ -80,85 +75,8 @@ export default class extends Controller {
       for (const step of steps) {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       }
-      instructions.innerHTML = `<p><strong>🚗 Trip duration: ${Math.floor(data.duration / 60)} min </strong></p> <ol>${tripInstructions}</ol>`;
+
+      instructions.insertAdjacentHTML('afterbegin', `<p><strong>🚗 Trip duration: ${Math.floor(data.duration / 60)} min </strong></p> <ol>${tripInstructions}</ol>`);
     }
-
-    map.on('load', () => {
-      // make an initial directions request that
-      // starts and ends at the same location
-      getRoute(start);
-
-      // Add starting point to the map
-      map.addLayer({
-        id: 'point',
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                  type: 'Point',
-                  coordinates: start
-                }
-              }
-            ]
-          }
-        },
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#3887be'
-        }
-      });
-      // this is where the code from the next step will go
-      map.on('click', (event) => {
-        const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
-        const end = {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: 'Point',
-                coordinates: coords
-              }
-            }
-          ]
-        };
-        if (map.getLayer('end')) {
-          map.getSource('end').setData(end);
-        } else {
-          map.addLayer({
-            id: 'end',
-            type: 'circle',
-            source: {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features: [
-                  {
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                      type: 'Point',
-                      coordinates: coords
-                    }
-                  }
-                ]
-              }
-            },
-            paint: {
-              'circle-radius': 10,
-              'circle-color': '#f30'
-            }
-          });
-        }
-        getRoute(coords);
-      });
-    });
   }
 }
