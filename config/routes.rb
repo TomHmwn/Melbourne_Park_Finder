@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: 'parking_bays#index'
-  resources :parking_bays, only: [:show]
+  resources :parking_bays, only: [:show] do
+    resources :trips, only: [:new, :create, :show]
+  end
+
 end

@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_052048) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.time "timer"
+    t.integer "timer"
     t.bigint "user_id", null: false
     t.bigint "parking_bay_id", null: false
     t.datetime "created_at", null: false

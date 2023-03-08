@@ -1,0 +1,12 @@
+<%= javascript_include_tag "timer" %>
+
+<div> Please enter your desired parking timer: </div>
+<%= form_with do |form| %>
+  <%= form.label :time %>
+  <%= form.text_field :timer %>
+  <%= form.submit "Submit" %>
+<% end %>
+
+<div>Your parking ends in <span id="time"><p id="test"> <%= :timer %> <p></span> minutes!</div>
+
+<%= link_to "Return to home", root_path %>
