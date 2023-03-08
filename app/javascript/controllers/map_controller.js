@@ -13,7 +13,7 @@ export default class extends Controller {
   }
   connect() {
     console.log('previous loaded: ', previouslyLoaded)
-    this.easingDuration = previouslyLoaded ? 0 : 1000
+    this.easingDuration = previouslyLoaded ? 0 : 2100
     previouslyLoaded = true
     // console.log(this.parkingBaysValue)
     mapboxgl.accessToken = this.apiKeyValue
