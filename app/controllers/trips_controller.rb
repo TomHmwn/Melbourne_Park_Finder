@@ -13,10 +13,10 @@ class TripsController < ApplicationController
     @parking_bay = ParkingBay.find(params[:parking_bay_id])
     @trip.parking_bay = @parking_bay
 
-    if @trip.save
-      redirect_to root_path
+    if @trip.save!
+      redirect_to parking_bay_trip_path(@parking_bay, @trip)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

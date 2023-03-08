@@ -15,9 +15,9 @@ function startTimer(duration, display) {
   }, 1000);
 }
 
-window.onload = function () {
-  var x = document.getElementById("test").innerHTML;
+document.addEventListener("turbo:load", () => {
+  var x = document.querySelector('#trip-timer').value;
   var parkingMinutes = 60 * x,
       display = document.querySelector('#time');
   startTimer(parkingMinutes, display);
-};
+});
