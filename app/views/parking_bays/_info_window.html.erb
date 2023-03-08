@@ -1,5 +1,3 @@
 <h2><%= parking_bay.address %></h2>
 <p>This space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
 <p><%= link_to 'Show directions to this parking space', parking_bay_path(parking_bay)%></p>
-<p><%#= link_to 'Show directions to this parking space', "parking_bays/#{parking_bay.id}" %></p>
-<%# raise %>

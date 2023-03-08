@@ -7,6 +7,7 @@
 
 <div>
   <div id="instructions">
-    <%= link_to 'Show directions', @parking_bay.directions_link, target:'_blank' %>
+    <strong> <%= link_to 'Show directions', @parking_bay.directions_link, target:'_blank' %> </strong> |
+    <strong> <%= link_to 'Start Timer', new_parking_bay_trip_path(@parking_bay) %> </strong>
   </div>
 </div>
