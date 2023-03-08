@@ -1,0 +1,14 @@
+<input type="hidden" id="trip-timer" value="<%= @trip.timer.to_i %>">
+
+<div>Time left on your park in minutes: </div>
+<div><span id="time"><p></span> </div>
+
+<div>Address: <%= @trip.parking_bay.address %></div>
+<% zone = ActiveSupport::TimeZone.new("Melbourne") %>
+<div>Park started at <%= zone.at(@trip.created_at).strftime('%l:%M %p') %></div>
+<div>Park ends at <%= (zone.at(@trip.created_at) + (@trip.timer * 60)).strftime('%l:%M %p') %></div>
+<div>Total parking time : <%= @trip.timer %> minutes</div>
+
+
+<br>
+<div> <%= link_to "Return to home", root_path %> </div>

@@ -1,0 +1,8 @@
+<h1> Start a Timer </h1>
+
+<%= simple_form_for [@parking_bay, @trip] do |f| %>
+  <%= f.input :timer, label: "Enter your desired parking timer (in minutes):" %>
+  <%= f.submit%>
+<% end %>
+
+<%= link_to "Return to map", parking_bay_path(@parking_bay) %>
