@@ -1,2 +1,11 @@
 <h2><%= parking_bay.address %></h2>
-<p>This space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
+<div class="text-lg pt-2">
+  <% if parking_bay.occupied %>
+    <i class="fa-solid fa-face-frown"></i>
+  <% else %>
+  <div class="">
+    <p>Get directions!</p> <!-- turn this into a link to the mapbox journey overview -->
+  </div>
+  <% end %>
+  <p>This space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
+</div>
