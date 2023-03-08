@@ -14,25 +14,21 @@ export default class extends Controller {
 
     const map = new mapboxgl.Map({
       container: this.element,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      // style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/dark-v11',
       center: [144.947982, -37.818711], // starting position
       zoom: 15
     });
-    // set the bounds of the map
-    // const bounds = [
-    //   [145.447982, -38.818711],
-    //   [143.947982, -37.318711]
-    // ];
-    // map.setMaxBounds(bounds);
     // an arbitrary start will always be the same
     // only the end or destination will change
+
     const start = [144.947982, -37.818711];
     navigator.geolocation.getCurrentPosition((data) => {
       console.log(data)
       // const end = [data.coords.longitude, data.coords.latitude];
       // getRoute(end);
     });
-    // this is where the code for the next step will go
+
     // create a function to make a directions request
     async function getRoute(end) {
       // make a directions request using cycling profile
@@ -77,7 +73,6 @@ export default class extends Controller {
           }
         });
       }
-      // add turn instructions here at the end
     }
 
     map.on('load', () => {
