@@ -17,7 +17,7 @@ doc = JSON.parse(html)
 puts "Creating Parking Bays..."
 
 doc["records"].each do |record|
-  record["fields"]["status"] == "Present" ? occupied = true : occupied = false
+  occupied = (record["fields"]["status"] == "Present")
   ParkingBay.create!(
     occupied:,
     longitude: record["fields"]["lon"],
