@@ -12,7 +12,7 @@ export default class extends Controller {
     parkingBays: Object,
   }
   connect() {
-    console.log('previous loaded: ', previouslyLoaded)
+    console.log('previously loaded: ', previouslyLoaded)
     this.easingDuration = previouslyLoaded ? 0 : 2100
     previouslyLoaded = true
     // console.log(this.parkingBaysValue)
