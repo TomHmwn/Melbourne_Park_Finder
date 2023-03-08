@@ -44,7 +44,7 @@ export default class extends Controller {
       // this.fetchCurrentLocation(user_lng, user_lat);
       // this.fetchCurrentLocation()
           // Add geolocate control to the map.
-      this.map.addControl(
+    this.map.addControl(
       new mapboxgl.GeolocateControl({
       positionOptions: {
       enableHighAccuracy: true
@@ -53,13 +53,12 @@ export default class extends Controller {
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
-      }, 'top-left')
-      );
+    }, 'top-left')
+  );
 
       this.map.on('load', this.loadMarkersData.bind(this));
-    });
 
-  };
+  }
 
   async loadMarkersData() {
    this.map.addSource('parking_bays', {
