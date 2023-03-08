@@ -27,7 +27,28 @@ class ParkingBaysController < ApplicationController
   def build_geojson
     {
       type: "FeatureCollection",
-      features: @parking_bays.map(&:to_feature)
+      features: @parking_bays.map{|pb| to_feature(pb)}
     }
   end
+
+  def to_feature(parking_bay)
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": parking_bay.coordinates
+      },
+      "properties": {
+        "parking_bay_id": parking_bay.id,
+        "address": parking_bay.address,
+        "occupied": parking_bay.occupied,
+        "color": parking_bay.occupied ? "red" : "green",
+        "info_window": render_to_string(
+          partial: "parking_bays/info_window",
+          locals: { parking_bay: parking_bay }
+        )
+      }
+    }
+  end
+
 end
