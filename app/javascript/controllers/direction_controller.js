@@ -13,14 +13,9 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
 
     const map = new mapboxgl.Map({
-<<<<<<< HEAD
       container: this.element,
       // style: 'mapbox://styles/mapbox/streets-v12',
       style: 'mapbox://styles/mapbox/dark-v11',
-=======
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
->>>>>>> master
       center: [144.947982, -37.818711], // starting position
       zoom: 15
     });
@@ -78,8 +73,7 @@ export default class extends Controller {
           }
         });
       }
-<<<<<<< HEAD
-=======
+
       const instructions = document.getElementById('instructions');
       const steps = data.legs[0].steps;
 
@@ -88,7 +82,7 @@ export default class extends Controller {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       }
       instructions.innerHTML = `<p><strong>🚗 Trip duration: ${Math.floor(data.duration / 60)} min </strong></p> <ol>${tripInstructions}</ol>`;
->>>>>>> master
+
     }
 
     map.on('load', () => {
