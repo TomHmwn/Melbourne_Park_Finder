@@ -1,16 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="map"
 export default class extends Controller {
 
   static values = {
     apiKey: String,
-    markers: Array,
     parkingBays: Object,
   }
   connect() {
-    console.log(this.parkingBaysValue)
+    // console.log(this.parkingBaysValue)
     mapboxgl.accessToken = this.apiKeyValue
 
       this.map = new mapboxgl.Map({
@@ -69,13 +69,23 @@ export default class extends Controller {
           }
         });
 
-        this.map.addLayer({
+        // console.log(this.parkingBaysValue.features);
+        // this.parkingBaysValue.features.forEach((feature) => {
+        //   if (feature.properties.occupied === true) {
+        //     let availability_color = '#f28cb1';
+        //   }
+        //   else {
+        //     let availability_color = '#51bbd6';
+        //   }
+        // });
+
+        this.map.addLayer({ // individual parking bay markers
           id: 'unclustered-point',
           type: 'circle',
           source: 'parking_bays',
           filter: ['!', ['has', 'point_count']],
           paint: {
-            'circle-color': '#11b4da',
+            'circle-color': ['get', 'color'],
             'circle-radius': 10,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
@@ -128,6 +138,9 @@ export default class extends Controller {
         }.bind(this));
 
         this.#fitMapToMarkers(this.map, this.parkingBaysValue.features);
+
+        this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl }), 'top-left')
       });
   }
   #fitMapToMarkers = (map, features) => {

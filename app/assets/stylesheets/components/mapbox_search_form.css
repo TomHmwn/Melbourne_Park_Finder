@@ -1,0 +1,6 @@
+.mapboxgl-ctrl-top-left {
+  @apply w-screem;
+}
+.mapboxgl-ctrl-geocoder {
+  @apply w-screem;
+}

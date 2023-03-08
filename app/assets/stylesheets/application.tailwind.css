@@ -1,5 +1,11 @@
+/* Graphical variables */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Your CSS partials */
 @import "components/index";
+
+
+/* External libraries */
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
