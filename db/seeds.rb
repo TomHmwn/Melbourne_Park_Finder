@@ -17,12 +17,13 @@ doc = JSON.parse(html)
 puts "Creating Parking Bays..."
 
 doc["records"].each do |record|
-  record["fields"]["status"] == "Present" ? occupied = true : occupied = false
+  occupied = (record["fields"]["status"] == "Present")
   ParkingBay.create!(
     occupied:,
     longitude: record["fields"]["lon"],
     latitude: record["fields"]["lat"],
-    sensorLastUpdated: record["fields"]["last_updated"]
+    sensorLastUpdated: record["fields"]["last_updated"],
+    st_marker_id: record["fields"]["st_marker_id"]
   )
 end
 
