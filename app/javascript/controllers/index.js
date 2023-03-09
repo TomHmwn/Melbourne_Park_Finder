@@ -12,3 +12,9 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import SliderController from "./slider_controller"
+application.register("slider", SliderController)
+
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)

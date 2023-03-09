@@ -2,4 +2,9 @@
 @import 'map';
 @import 'map_left';
 @import 'map_right';
+<<<<<<< HEAD
+@import 'popup';
+=======
 @import 'map_modal';
+@import 'timer';
+>>>>>>> master
