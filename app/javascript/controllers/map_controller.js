@@ -19,6 +19,8 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
 
     this.loadMap()
+
+
   }
 
   loadMap() {
@@ -30,6 +32,19 @@ export default class extends Controller {
       center: [144.947982, -37.8187],
       zoom: 3
     });
+
+    // Add geolocate control to the map.
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      // When active the map will receive updates to the device's location as it changes.
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true
+    }, 'top-left')
+  );
 
     this.map.on('load', ()=> {
       this.map.addSource('parking_bays', {
