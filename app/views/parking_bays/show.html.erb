@@ -7,8 +7,7 @@
 
 <div>
   <div id="instructions">
-    <p><%= link_to 'Go back', root_path, class: 'no-underline hover:underline' %></p>
-    <p><%= link_to 'Navigate with Google Maps!', @parking_bay.directions_link, target:'_blank', class: 'no-underline hover:underline' %></p>
-    <p><%= link_to 'Start Timer', new_parking_bay_trip_path(@parking_bay) %></p>
+    <strong> <%= link_to 'Show directions', @parking_bay.directions_link, target:'_blank' %> </strong> |
+    <strong> <%= link_to 'Start Timer', new_parking_bay_trip_path(@parking_bay) %> </strong>
   </div>
 </div>
