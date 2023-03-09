@@ -17,6 +17,12 @@ class ParkingBaysController < ApplicationController
     @parking_bay = ParkingBay.find(params[:id])
   end
 
+  def filter
+    @profile = params[:profile]
+    @minutes = params[:minutes]
+    render :index
+  end
+
   private
 
   def build_geojson
