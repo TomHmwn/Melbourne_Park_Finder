@@ -11,7 +11,7 @@
   position: absolute;
   margin: 30px;
   width: 25%;
-  top: 5px;
+  top: 10px;
   bottom: 40%;
   padding: 15px;
   background-color: #fff;
@@ -22,4 +22,5 @@
 ol li {
   list-style: decimal;
   list-style-position: inside;
+  padding-top: 5px;
 }
