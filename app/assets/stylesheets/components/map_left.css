@@ -1,5 +1,5 @@
 .mapboxgl-ctrl-top-left {
-  @apply w-96;
+  @apply w-80 mt-2;
 }
 .mapboxgl-ctrl-geocoder {
   @apply bg-transparent;
