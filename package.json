@@ -11,6 +11,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.13",
     "esbuild": "^0.17.11",
+    "flowbite": "^1.6.3",
     "mapbox-gl": "^2.13.0",
     "postcss": "^8.4.21",
     "postcss-flexbugs-fixes": "^5.0.2",
