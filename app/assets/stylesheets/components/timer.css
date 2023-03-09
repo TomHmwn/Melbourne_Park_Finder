@@ -52,15 +52,3 @@
   justify-content: center;
   font-size: 48px;
 }
-
-.text-box{
-  text-align: center;
-  font-size: 15px;
-  margin-top: 20px;
-}
-
-.timer-box{
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
