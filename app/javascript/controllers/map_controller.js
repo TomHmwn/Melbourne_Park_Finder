@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
-let previouslyLoaded = false;
-
 // Connects to data-controller="map"
 export default class extends Controller {
 
@@ -13,32 +11,15 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log('previously loaded: ', previouslyLoaded)
-    this.easingDuration = previouslyLoaded ? 0 : 2100
-    previouslyLoaded = true
     // console.log(this.parkingBaysValue)
     mapboxgl.accessToken = this.apiKeyValue
 
-    this.loadMap()
-  }
-
-  loadMap() {
-    console.log('loading map')
-    this.map = new mapboxgl.Map({
+      this.map = new mapboxgl.Map({
       container: this.element,
       style: 'mapbox://styles/mapbox/dark-v11',
       // center: [-103.5917, 40.6699], // [longitude, latitude]
       center: [144.947982, -37.8187],
       zoom: 3
-    });
-
-    this.map.on('load', ()=> {
-      this.map.addSource('parking_bays', {
-        type: 'geojson',
-        data: this.parkingBaysValue,
-        cluster: true,
-        clusterMaxZoom: 14,
-        clusterRadius: 50
       });
 
       // this.fetchCurrentLocation(user_lng, user_lat);
@@ -107,6 +88,16 @@ export default class extends Controller {
        'text-size': 12
      }
    });
+
+   // console.log(this.parkingBaysValue.features);
+   // this.parkingBaysValue.features.forEach((feature) => {
+   //   if (feature.properties.occupied === true) {
+   //     let availability_color = '#f28cb1';
+   //   }
+   //   else {
+   //     let availability_color = '#51bbd6';
+   //   }
+   // });
 
    this.map.addLayer({ // individual parking bay markers
      id: 'unclustered-point',
@@ -226,10 +217,9 @@ export default class extends Controller {
       return [user_lng, user_lat];
     });
   }
-
   #fitMapToMarkers = (map, features) => {
     const bounds = new mapboxgl.LngLatBounds();
     features.forEach(({ geometry }) => bounds.extend(geometry.coordinates));
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: this.easingDuration });
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
   };
 }
