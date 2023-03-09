@@ -16,12 +16,15 @@ const COLOR_CODES = {
   }
 };
 
-var x = document.querySelector('#trip-timer').value;
-const TIME_LIMIT = x * 60;
-let timePassed = 0;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
-let remainingPathColor = COLOR_CODES.info.color;
+
+document.addEventListener("turbo:load", () => {
+
+  var x = document.querySelector('#trip-timer').value;
+  let time = x * 60;
+  let timePassed = 0;
+  let timeLeft = time;
+  let timerInterval = null;
+  let remainingPathColor = COLOR_CODES.info.color;
 
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
@@ -46,7 +49,6 @@ document.getElementById("app").innerHTML = `
   )}</span>
 </div>
 `;
-
 startTimer();
 
 function onTimesUp() {
@@ -56,7 +58,7 @@ function onTimesUp() {
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
+    timeLeft = time - timePassed;
     document.getElementById("base-timer-label").innerHTML = formatTime(
       timeLeft
     );
@@ -100,8 +102,8 @@ function setRemainingPathColor(timeLeft) {
 }
 
 function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+  const rawTimeFraction = timeLeft / time;
+  return rawTimeFraction - (1 / time) * (1 - rawTimeFraction);
 }
 
 function setCircleDasharray() {
@@ -112,3 +114,4 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+});
