@@ -13,17 +13,18 @@
       <h5 id="drawer-swipe-label" class="inline-flex items-center text-base text-gray-500 dark:text-gray-400">Filter</h5>
    </div>
 
+
     <form class="text-center flex flex-col items-center mt-4" data-action="submit->map#getIso" data-map-target="form">
-        <div class="flex w-full justify-evenly mb-8">
-        <div class= "mb-2 text-md font-semibold text-gray-900 dark:text-white mb-4">Filter based from</div>
-        <div>
-          <input type="radio" id="user" class="peer hidden" value="user" name="location"/>
-          <label for="user" class="filter-radio-small">Your location</label>
-        </div>
-        <div>
-          <input type="radio" id="geocoder" class="peer hidden" value="geocoder" name="location"/>
-          <label for="geocoder" class="filter-radio-small">Address</label>
-        </div>
+        <div class="flex w-full justify-evenly mb-4">
+          <div class= "text-md font-semibold text-gray-900 dark:text-white mb-2">Filter based from</div>
+          <div>
+            <input type="radio" id="user" class="peer hidden" value="user" name="location"/>
+            <label for="user" class="filter-radio-small ">Your location</label>
+          </div>
+          <div>
+            <input type="radio" id="geocoder" class="peer hidden" value="geocoder" name="location"/>
+            <label for="geocoder" class="filter-radio-small">Address</label>
+          </div>
       </div>
       <div class="flex w-3/4 justify-evenly">
         <div>
@@ -39,9 +40,9 @@
           <label for="driving" class="filter-radio">Driving</label>
         </div>
       </div>
-      <div data-controller='slider' class='w-5/6'>
+      <div data-controller='slider' class='w-5/6 flex flex-col items-center justify-center'>
         <div class="flex flex-col w-5/6 m-8">
-          <label for="default-range" class="place-self-start mb-2 text-lg font-medium text-gray-900 dark:text-white mb-8">Minutes</label>
+          <label for="default-range" class="place-self-start mb-2 text-lg font-medium text-gray-900 dark:text-white mb-4">Minutes</label>
           <div id="range-value" data-slider-target="output" class="text-zinc-500 text-xl font-bold mb-2"></div>
           <input data-action="input->slider#display" name="minutes" id="default-range" type="range" min="1" max="20" value='1' step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
         </div>
