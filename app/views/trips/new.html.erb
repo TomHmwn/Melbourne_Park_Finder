@@ -1,11 +1,19 @@
 
 <div class="container mx-auto text-center m-3 p-5 ">
-<h1 class=" text-3xl"> Start a Timer ⏰ </h1>
-<div class="p-10 text-xl">
-<%= simple_form_for [@parking_bay, @trip] do |f| %>
-  <%= f.input :timer, label: "Enter your desired parking timer (in minutes): ", :input_html => {:maxlength =>3,:style=> 'width: 100px'} %>
-  <%= f.button :submit, "Start Timer", class:"px-4 py-2 font-semibold bg-green-500 text-white rounded-full mt-5"%>
-<% end %>
-</div>
-<%= link_to "Return to map", parking_bay_path(@parking_bay), class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
+  <h1 class=" text-3xl"> Parking Timer ⏰ </h1>
+    <div class="p-5 text-xl ">
+      <p> Enter your desired parking time: </p>
+        <div id="test" class ="flex justify-center items-center" ></div>
+          <div id="timer-form" class="hidden" >
+            <%= simple_form_for [@parking_bay, @trip] do |f| %>
+              <%= f.input :timer, label:" ", :input_html => {:maxlength =>3,:style=> 'width: 60px'} %>
+              <%= f.label "minutes" %>
+              <br>
+              <%= f.button :submit, "Start Timer", class:"px-4 py-2 font-semibold bg-green-400 text-white rounded-full mt-5"%>
+            <% end %>
+          </div>
+
+      <br>
+      <%= link_to "Return to map", parking_bay_path(@parking_bay), class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
+    </div>
 </div>
