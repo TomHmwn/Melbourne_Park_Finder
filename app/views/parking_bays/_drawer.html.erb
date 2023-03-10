@@ -1,5 +1,5 @@
 <!-- drawer init and toggle -->
-<div class="text-center">
+<div class="text-center hidden">
    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-swipe" data-drawer-show="drawer-swipe" data-drawer-placement="bottom" data-drawer-edge="true" data-drawer-edge-offset="bottom-[60px]" aria-controls="drawer-swipe">
    Show swipeable drawer
    </button>
@@ -13,17 +13,18 @@
       <h5 id="drawer-swipe-label" class="inline-flex items-center text-base text-gray-500 dark:text-gray-400">Filter</h5>
    </div>
 
+
     <form class="text-center flex flex-col items-center mt-4" data-action="submit->map#getIso" data-map-target="form">
-        <div class="flex w-full justify-evenly mb-8">
-        <div class= "mb-2 text-md font-semibold text-gray-900 dark:text-white mb-4">Filter based from</div>
-        <div>
-          <input type="radio" id="user" class="peer hidden" value="user" name="location"/>
-          <label for="user" class="filter-radio-small">Your location</label>
-        </div>
-        <div>
-          <input type="radio" id="geocoder" class="peer hidden" value="geocoder" name="location"/>
-          <label for="geocoder" class="filter-radio-small">Address</label>
-        </div>
+        <div class="flex w-full justify-evenly mb-4">
+          <div class= "text-md font-semibold text-gray-900 dark:text-white mb-2">Filter based from</div>
+          <div>
+            <input type="radio" id="user" class="peer hidden" value="user" name="location"/>
+            <label for="user" class="filter-radio-small ">Your location</label>
+          </div>
+          <div>
+            <input type="radio" id="geocoder" class="peer hidden" value="geocoder" name="location"/>
+            <label for="geocoder" class="filter-radio-small">Address</label>
+          </div>
       </div>
       <div class="flex w-3/4 justify-evenly">
         <div>
@@ -39,18 +40,20 @@
           <label for="driving" class="filter-radio">Driving</label>
         </div>
       </div>
-      <div class="flex flex-col w-5/6 m-8" data-controller="slider">
-        <label for="default-range" class="place-self-start mb-2 text-lg font-medium text-gray-900 dark:text-white mb-8">Minutes</label>
-        <div id="range-value" data-slider-target="output" class="text-zinc-500 text-xl font-bold mb-2"></div>
-        <input data-action="input->slider#display" name="minutes" id="default-range" type="range" min="1" max="20" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-      </div>
-      <div class="mb-4 flex justify-evenly w-5/6">
-        <button class="bg-slate-300 hover:bg-slate-400 text-blue-400 hover:te font-bold py-4 px-12 rounded-full" type="reset">
-          Reset
-        </button>
-        <button class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full" type="submit">
-          Apply
-        </button>
+      <div data-controller='slider' class='w-5/6 flex flex-col items-center justify-center'>
+        <div class="flex flex-col w-5/6 m-8">
+          <label for="default-range" class="place-self-start mb-2 text-lg font-medium text-gray-900 dark:text-white mb-4">Minutes</label>
+          <div id="range-value" data-slider-target="output" class="text-zinc-500 text-xl font-bold mb-2"></div>
+          <input data-action="input->slider#display" name="minutes" id="default-range" type="range" min="1" max="20" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+        </div>
+        <div class="mb-4 flex justify-evenly w-5/6">
+          <button data-action='click->slider#reset' class="bg-slate-300 hover:bg-slate-400 text-blue-400 hover:te font-bold py-4 px-12 rounded-full" type="reset">
+            Reset
+          </button>
+          <button class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full" type="submit">
+            Apply
+          </button>
+        </div>
       </div>
     </form>
 

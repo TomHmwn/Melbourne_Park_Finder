@@ -9,4 +9,8 @@ export default class extends Controller {
   display(e) {
     this.outputTarget.innerHTML = e.currentTarget.value;
   }
+
+  reset() {
+    this.outputTarget.innerHTML = 0;
+  }
 }

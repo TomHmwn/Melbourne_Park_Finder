@@ -28,8 +28,7 @@ export default class extends Controller {
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
     let remainingPathColor = COLOR_CODES.info.color;
-    console.log(timeLeft)
-    clearInterval(timerInterval);
+
     startTimer();
 
     document.getElementById("app").innerHTML = `
