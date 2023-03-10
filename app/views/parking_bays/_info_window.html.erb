@@ -1,9 +1,8 @@
+<% chomp_section = ', Melbourne, City of Melbourne, Victoria, 3051, Australia' %>
 <h2><%= parking_bay.address %></h2>
-<div class="text-lg pt-2">
-  <% if parking_bay.occupied %>
-    <i class="fa-solid fa-face-frown"></i>
-  <% else %>
-    <p class="no-underline hover:underline"><%= link_to 'See directions!', parking_bay_path(parking_bay)%></p>
+<div class="pt-2">
+<p>This space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
+  <% if !parking_bay.occupied %>
+    <p class="no-underline hover:underline"><%= link_to 'See directions', parking_bay_path(parking_bay)%></p>
   <% end %>
-  <p>This space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
 </div>
