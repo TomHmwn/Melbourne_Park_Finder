@@ -69,6 +69,7 @@ export default class extends Controller {
       }
 
       const instructions = document.getElementById('instructions');
+      instructions.innerHTML = '';
       const steps = data.legs[0].steps;
 
       let tripInstructions = '';
