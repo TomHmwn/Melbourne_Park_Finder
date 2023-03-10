@@ -3,7 +3,7 @@
   <h1 class=" text-3xl"> Parking Timer ⏰ </h1>
     <div class="p-5 text-xl ">
       <p> Enter your desired parking time: </p>
-        <div id="test" class ="flex justify-center items-center" ></div>
+        <div id="new-timer" class ="flex justify-center items-center" ></div>
           <div id="timer-form" class="hidden" >
             <%= simple_form_for [@parking_bay, @trip] do |f| %>
               <%= f.input :timer, label:" ", :input_html => {:maxlength =>3,:style=> 'width: 60px'} %>
