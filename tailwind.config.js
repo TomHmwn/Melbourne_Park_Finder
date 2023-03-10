@@ -11,10 +11,6 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
-<<<<<<< HEAD
-    require('flowbite/plugin'),
-=======
     require('flowbite/plugin')
->>>>>>> master
   ]
 }

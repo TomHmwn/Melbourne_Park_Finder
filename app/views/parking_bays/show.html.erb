@@ -26,14 +26,13 @@
             </div>
             <!-- Modal body -->
             <div id="instructions" class="rounded p-4">
-              <%# Commented out link to start timer %>
-              <p><%#= link_to 'Start Timer', new_parking_bay_trip_path(@parking_bay) %></p>
             </div>
             <!-- Modal footer -->
             <div class="p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
               <div id="instructions-redirectory" class="flex justify-between px-4">
                 <p><%= link_to 'Go back', root_path, class: 'button-invert-color' %></p>
                 <p><%= link_to 'Start journey', @parking_bay.directions_link, target:'_blank', class: 'button' %></p>
+                <p><%= link_to 'Start timer', new_parking_bay_trip_path(@parking_bay), class:'button-invert-color' %></p>
               </div>
             </div>
           </div>
