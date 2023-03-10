@@ -5,3 +5,7 @@
 .mapboxgl-popup-content {
   @apply text-center;
 }
+
+.mapboxgl-popup-close-button {
+  @apply pr-2;
+}
