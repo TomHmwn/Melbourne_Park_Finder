@@ -7,6 +7,9 @@ import { application } from "./application"
 import DirectionController from "./direction_controller"
 application.register("direction", DirectionController)
 
+import DirectionToggleController from "./direction_toggle_controller"
+application.register("direction-toggle", DirectionToggleController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

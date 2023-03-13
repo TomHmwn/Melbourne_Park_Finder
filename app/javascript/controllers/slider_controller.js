@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "output" ]
   connect() {
-    console.log('slider connected')
+    // console.log('slider connected')
   }
   display(e) {
     this.outputTarget.innerHTML = e.currentTarget.value;

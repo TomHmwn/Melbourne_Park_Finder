@@ -1,0 +1,19 @@
+#instructions {
+  /* @apply absolute top-0 left-0 w-80 p-15 m-8 bg-blue-400; */
+}
+.instructions-container {
+  position: absolute;
+  height: 100%;
+  width: 400px;
+  top: 0px;
+  left: 0px;
+  background-color: transparent;
+  overflow-y: scroll;
+  font-family: sans-serif;
+  /* display:none; */
+}
+
+/* If we want to hide the scrollbar */
+#instructions::-webkit-scrollbar {
+  /* display: none; */
+}
