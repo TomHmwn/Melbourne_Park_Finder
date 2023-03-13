@@ -15,8 +15,8 @@ export default class extends Controller {
   position = {longitude:  144.947982, latitude: -37.8187}
   connect() {
     console.log('previously loaded: ', previouslyLoaded)
-    // this.easingDuration = previouslyLoaded ? 0 : 2100
-    this.easingDuration = 0
+    this.easingDuration = previouslyLoaded ? 0 : 2100
+    // this.easingDuration = 0
     previouslyLoaded = true
     // console.log(this.parkingBaysValue)
     mapboxgl.accessToken = this.apiKeyValue
