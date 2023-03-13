@@ -8,11 +8,14 @@
            <%= simple_form_for [@parking_bay, @trip] do |f| %>
             <div class="form-inline">
               <div class="form-inputs inline-inputs">
-                <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px'} %>
+                <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px', value: '00'} %>
+                <%= f.error :hours %>
                 <span class="inline-label">:</span>
-                <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px'} %>
+                <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px', value: '00'} %>
+                <%= f.error :minutes %>
               </div>
               <div class="form-actions">
+                <%= f.error :base %>
                 <%= f.button :submit, "Start Timer", class:"px-4 py-2 font-semibold bg-green-400 text-white rounded-full"%>
               </div>
             </div>
