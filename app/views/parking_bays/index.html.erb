@@ -1,8 +1,6 @@
 <div data-controller="map"
       data-map-parking-bays-value="<%= @geojson.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      data-map-profile-value="<%= @profile %>"
-      data-map-minutes-value="<%= @minutes %>"
       class="relative">
       <%# map %>
       <div style="width: 100%; height:98vh;" data-map-target="map"></div>

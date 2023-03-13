@@ -11,12 +11,15 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     parkingBays: Object,
+    position: {
+      type: Object,
+      default: {longitude:  144.947982, latitude: -37.8187}
+    }
   }
-  position = {longitude:  144.947982, latitude: -37.8187}
   connect() {
-    console.log('previously loaded: ', previouslyLoaded)
-    // this.easingDuration = previouslyLoaded ? 0 : 2100
-    this.easingDuration = 0
+    // console.log('previously loaded: ', previouslyLoaded)
+    this.easingDuration = previouslyLoaded ? 0 : 2100
+    // this.easingDuration = 0
     previouslyLoaded = true
     // console.log(this.parkingBaysValue)
     mapboxgl.accessToken = this.apiKeyValue
@@ -25,18 +28,17 @@ export default class extends Controller {
   }
 
   loadMap() {
-    console.log('loading map')
+    // console.log('loading map')
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
       style: 'mapbox://styles/mapbox/dark-v11',
       // center: [-103.5917, 40.6699], // [longitude, latitude]
-      center: [144.947982, -37.8187],
+      center: [this.positionValue.longitude, this.positionValue.latitude],
       zoom: 3
     });
 
     const geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl })
     this.map.addControl(geocoder, 'top-left');
-
 
     geocoder._inputEl.addEventListener('focus', function () {
       geocoder._geocode(geocoder._inputEl.value);
@@ -44,11 +46,12 @@ export default class extends Controller {
 
     geocoder.on('result', function(e) {
       console.log(e.result.center)
-      this.position = {longitude: e.result.center[0], latitude: e.result.center[1]}
-      if (e && e.result) {
-        geocoder.trigger();
-      }
-    })
+      this.positionValue = {longitude: e.result.center[0], latitude: e.result.center[1]}
+      console.log('AFTER SET this.positionValue', this.positionValue)
+      // if (e && e.result) {
+      //   geocoder.trigger();
+      // }
+    }.bind(this))
 
 
     // Add geolocate control to the map.
@@ -64,11 +67,11 @@ export default class extends Controller {
     this.map.addControl(geolocate);
 
     geolocate.on('geolocate', function(e) {
-      console.log(e)
+      // console.log(e)
           const longitude = e.coords.longitude;
           const latitude = e.coords.latitude
-           this.userPosition = {longitude, latitude};
-          console.log(this.userPosition);
+          this.userPosition = {longitude: longitude, latitude: latitude};
+          // console.log(this.userPosition);
     }.bind(this));
 
     this.map.on('load', ()=> {
@@ -221,16 +224,30 @@ export default class extends Controller {
   // Create a function that sets up the Isochrone API query then makes an fetch call
   getIso = (e) => {
     e.preventDefault();
-    console.log(this.position)
     const form = e.currentTarget
     const formData = new FormData(form)
     // Create constants to use in getIso()
     const urlBase = 'https://api.mapbox.com/isochrone/v1/mapbox/';
+    console.log(formData.get("location"))
 
-    const lon = formData.get("location") == "user" ? this.userPosition.longitude: this.position.longitude;
-    const lat = formData.get("location") == "user" ? this.userPosition.latitude: this.position.latitude;
+    const lat = formData.get("location") === "user" ? this.userPosition.latitude : this.positionValue.latitude;
+    const lon = formData.get("location") === "user" ? this.userPosition.longitude : this.positionValue.longitude;
+    console.log('this.positionValue', this.positionValue)
+    console.log('LAT, LON', lat, lon)
+    // lon = formData.get("location") == "geocoder" ? this.positionValue.longitude: this.userPosition.longitude;
+    // lat = formData.get("location") == "geocoder" ? this.positionValue.latitude: this.userPosition.latitude;
 
-    console.log(lon,lat)
+    // console.log(this.positionValue)
+    // if (formData.get("location") == "geocoder") {
+
+    //   lat = this.positionValue.latitude;
+    //   lon = this.positionValue.longitude;
+    // }
+    // if (formData.get("location") == "user"){
+    //   lat = this.userPosition.latitude;
+    //   lon = this.userPosition.longitude;
+    // }
+
     const profile = formData.get('profile'); // Set the default routing profile
     const minutes = formData.get('minutes'); // Set the default duration
 
@@ -240,9 +257,6 @@ export default class extends Controller {
     )
      .then((response) => response.json())
      .then(async (data) => {
-
-
-
         this.map.getSource('iso').setData(data);
         this.setBounds(data.features[0].geometry.coordinates[0])
       });
@@ -253,7 +267,7 @@ export default class extends Controller {
     coordinates.forEach((coordinate) => {
       bounds.extend(coordinate);
     });
-    this.map.fitBounds(bounds, { padding: 15, maxZoom: 20 });
+    this.map.fitBounds(bounds, { padding: 15, maxZoom: 22 });
   }
 
   #fitMapToMarkers = (map, features) => {

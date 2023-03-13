@@ -4,3 +4,11 @@
 .mapboxgl-ctrl-geocoder {
   @apply bg-transparent;
 }
+
+.mapboxgl-ctrl-geocoder--icon-search {
+ /* @apply invisible; */
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  @apply pl-0;
+}
