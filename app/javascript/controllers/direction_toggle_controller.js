@@ -5,11 +5,11 @@ import mapboxgl from 'mapbox-gl';
 export default class extends Controller {
   static targets = [ "map", "instruction" ]
   connect() {
-    console.log("direction toggle connected")
+    // console.log("direction toggle connected")
   }
 
   toggleMap() {
-    console.log(this.instructionTarget);
+    // console.log(this.instructionTarget);
 
     if(this.mapTarget.classList.contains('hidden') ) {
       this.mapTarget.classList.remove('hidden')

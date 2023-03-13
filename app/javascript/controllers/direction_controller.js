@@ -29,7 +29,6 @@ export default class extends Controller {
        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.start[0]},${this.start[1]}.json?access_token=${mapboxgl.accessToken}   `)
        .then(response => response.json())
        .then(data => {
-          console.log(data)
           this.start[2] = data.features[0].place_name;
           this.startTarget.value = this.start[2];
           this.endTarget.value = this.parkingBayValue.address;
@@ -50,7 +49,6 @@ export default class extends Controller {
       );
       const json = await query.json();
       const data = json.routes[0];
-      console.log(data.duration);
 
       const route = data.geometry.coordinates;
       const geojson = {
@@ -113,19 +111,6 @@ export default class extends Controller {
           'circle-stroke-color': '#fff',
         }
       });
-
-
-      // const instructions = document.getElementById('instructions');
-      // instructions.innerHTML = '';
-      // const steps = data.legs[0].steps;
-
-      // let tripInstructions = '';
-      // for (const step of steps) {
-      //   tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-      // }
-      // console.log(instructions)
-
-      // instructions.insertAdjacentHTML('afterbegin', `<p><strong>🚗 Trip duration: ${Math.floor(data.duration / 60)} min </strong></p> <ol>${tripInstructions}</ol>`);
 
       const duration = document.getElementById('duration');
       duration.innerHTML = '';

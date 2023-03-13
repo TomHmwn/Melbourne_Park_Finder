@@ -45,9 +45,9 @@ export default class extends Controller {
     });
 
     geocoder.on('result', function(e) {
-      console.log(e.result.center)
+      // console.log(e.result.center)
       this.positionValue = {longitude: e.result.center[0], latitude: e.result.center[1]}
-      console.log('AFTER SET this.positionValue', this.positionValue)
+      // console.log('AFTER SET this.positionValue', this.positionValue)
       // if (e && e.result) {
       //   geocoder.trigger();
       // }
@@ -123,15 +123,6 @@ export default class extends Controller {
         }
       });
 
-      // console.log(this.parkingBaysValue.features);
-      // this.parkingBaysValue.features.forEach((feature) => {
-      //   if (feature.properties.occupied === true) {
-      //     let availability_color = '#f28cb1';
-      //   }
-      //   else {
-      //     let availability_color = '#51bbd6';
-      //   }
-      // });
 
       this.map.addLayer({ // individual parking bay markers
         id: 'unclustered-point',
@@ -232,21 +223,8 @@ export default class extends Controller {
 
     const lat = formData.get("location") === "user" ? this.userPosition.latitude : this.positionValue.latitude;
     const lon = formData.get("location") === "user" ? this.userPosition.longitude : this.positionValue.longitude;
-    console.log('this.positionValue', this.positionValue)
-    console.log('LAT, LON', lat, lon)
-    // lon = formData.get("location") == "geocoder" ? this.positionValue.longitude: this.userPosition.longitude;
-    // lat = formData.get("location") == "geocoder" ? this.positionValue.latitude: this.userPosition.latitude;
-
-    // console.log(this.positionValue)
-    // if (formData.get("location") == "geocoder") {
-
-    //   lat = this.positionValue.latitude;
-    //   lon = this.positionValue.longitude;
-    // }
-    // if (formData.get("location") == "user"){
-    //   lat = this.userPosition.latitude;
-    //   lon = this.userPosition.longitude;
-    // }
+    // console.log('this.positionValue', this.positionValue)
+    // console.log('LAT, LON', lat, lon)
 
     const profile = formData.get('profile'); // Set the default routing profile
     const minutes = formData.get('minutes'); // Set the default duration
