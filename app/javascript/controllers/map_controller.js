@@ -17,7 +17,7 @@ export default class extends Controller {
     }
   }
   connect() {
-    // console.log('previously loaded: ', previouslyLoaded)
+
     this.easingDuration = previouslyLoaded ? 0 : 2100
     // this.easingDuration = 0
     previouslyLoaded = true
