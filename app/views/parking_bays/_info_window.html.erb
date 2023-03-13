@@ -11,9 +11,13 @@
   <% end %>
     <p class="font-semibold text-xl text-left"><%= street_address %></p>
     <p class="text-slate-300 text-lg font-medium text-left"><%= address_area %><p>
-    <div class="w-32 place-self-end pt-6">
-      <div class="px-3 py-2 bg-black rounded-lg flex justify-center">
-        <p class="text-sm font-semibold text-white">Directions</p>
-      </div>
-    </div>
+    <% if !parking_bay.occupied %>
+      <%= link_to parking_bay_path(parking_bay) do %>
+        <div class="w-32 place-self-end pt-6">
+          <div class="px-3 py-2 bg-black rounded-lg flex justify-center">
+            <p class="text-sm font-semibold text-white">Directions</p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 </div>
