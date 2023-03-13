@@ -15,16 +15,18 @@
 
 
     <form class="text-center flex flex-col items-center mt-4" data-action="submit->map#getIso" data-map-target="form">
-        <div class="flex w-full justify-evenly mb-4">
-          <div class= "text-md font-semibold text-gray-900 dark:text-white mb-2">Filter based from</div>
-          <div>
-            <input type="radio" id="user" class="peer hidden" value="user" name="location"/>
-            <label for="user" class="filter-radio-small ">Your location</label>
+      <div class="flex w-3/4 justify-around mb-4 ">
+        <div class= "text-md font-semibold text-gray-900 dark:text-white mb-2">Filter based from</div>
+        <div class="flex">
+          <div class="">
+            <input type="radio" id="geocoder" class="peer hidden " value="geocoder" name="location" checked/>
+            <label for="geocoder" class="filter-radio-small rounded-l-lg">Address</label>
           </div>
-          <div>
-            <input type="radio" id="geocoder" class="peer hidden" value="geocoder" name="location"/>
-            <label for="geocoder" class="filter-radio-small">Address</label>
+          <div class="">
+            <input type="radio" id="user" class="peer hidden " value="user" name="location"/>
+            <label for="user" class="filter-radio-small rounded-r-lg">Your location</label>
           </div>
+        </div>
       </div>
       <div class="flex w-3/4 justify-evenly">
         <div>
