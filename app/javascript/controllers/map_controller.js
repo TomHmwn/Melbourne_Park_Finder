@@ -253,7 +253,7 @@ export default class extends Controller {
     coordinates.forEach((coordinate) => {
       bounds.extend(coordinate);
     });
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+    this.map.fitBounds(bounds, { padding: 15, maxZoom: 20 });
   }
 
   #fitMapToMarkers = (map, features) => {
