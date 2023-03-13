@@ -5,8 +5,8 @@ export default class extends Controller {
 
   connect() {
     const FULL_DASH_ARRAY = 283;
-    const WARNING_THRESHOLD = 10;
-    const ALERT_THRESHOLD = 5;
+    const WARNING_THRESHOLD = 300 ;
+    const ALERT_THRESHOLD = 60;
 
     const COLOR_CODES = {
       info: {
@@ -22,8 +22,10 @@ export default class extends Controller {
       }
     };
 
-    let x = document.querySelector('#trip-timer').value;
-    const TIME_LIMIT = x * 60;
+    const h = document.querySelector('#trip-hour').value;
+    const m = document.querySelector('#trip-minute').value;
+
+    const TIME_LIMIT = (h * 3600) + (m * 60);
     let timePassed = 0;
     let timeLeft = TIME_LIMIT;
     let timerInterval = null;
@@ -80,17 +82,20 @@ export default class extends Controller {
     }
 
     function formatTime(time) {
-      const minutes = Math.floor(time / 60);
+      let hours = Math.floor(time / 3600);
+      let minutes = Math.floor((time % 3600) / 60);
       let seconds = time % 60;
 
-      if (seconds < 10) {
-        seconds = `0${seconds}`;
-      }
+      hours = hours < 10 ? `0${hours}` : hours;
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      seconds = seconds < 10 ? `0${seconds}` : seconds;
 
-      return `${minutes}:${seconds}`;
+      return `${hours}:${minutes}:${seconds}`;
     }
 
     function setRemainingPathColor(timeLeft) {
+      const alertShown = false;
+      const warningShown = false;
       const { alert, warning, info } = COLOR_CODES;
       if (timeLeft <= alert.threshold) {
         document
@@ -99,6 +104,10 @@ export default class extends Controller {
         document
           .getElementById("base-timer-path-remaining")
           .classList.add(alert.color);
+        if (alertShown === false) {
+          window.alert("Alert! Your parking expires in 1 minute.");
+          alertShown = true;
+        }
       } else if (timeLeft <= warning.threshold) {
         document
           .getElementById("base-timer-path-remaining")
@@ -106,6 +115,10 @@ export default class extends Controller {
         document
           .getElementById("base-timer-path-remaining")
           .classList.add(warning.color);
+        if (warningShown === false) {
+          window.alert("Warning alert! Your parking expires in 5 minutes.");
+          warningShown = true;
+        }
       }
     }
 

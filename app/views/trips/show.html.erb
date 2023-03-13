@@ -1,15 +1,17 @@
-<input type="hidden" id="trip-timer" value="<%= @trip.timer.to_i %>">
+<input type="hidden" id="trip-hour" value="<%= @trip.hours.to_i %>">
+<input type="hidden" id="trip-minute" value="<%= @trip.minutes.to_i %>">
+
 <% zone = ActiveSupport::TimeZone.new("Melbourne") %>
 
 <div class="m-5 text-center text-3xl"><strong>Time left on your park: </strong></div>
 <div data-controller="timer" id="app" class ="flex justify-center items-center">
 </div>
 <div class="container mx-auto text-center mt-5 p-4 ">
-<p><strong> Address: </strong> <%= @trip.parking_bay.address %> </p>
-<p><strong> Bay Number: </strong> <%= @trip.parking_bay.id %> </p>
-<p><strong> Parking from: </strong> <%= zone.at(@trip.created_at).strftime('%l:%M %p') %> - <%= (zone.at(@trip.created_at) + (@trip.timer * 60)).strftime('%l:%M %p') %> </p>
-<p><strong> Duration: </strong> <%= @trip.timer %> minutes </p>
+  <p><strong> Address: </strong> <%= @trip.parking_bay.address %> </p>
+  <p><strong> Bay Number: </strong> <%= @trip.parking_bay.id %> </p>
+  <p><strong> Parking From: </strong> <%= zone.at(@trip.created_at).strftime('%l:%M %p') %> - <%= (zone.at(@trip.created_at) + ((@trip.minutes * 60)+(@trip.hours * 3600))).strftime('%l:%M %p') %> </p>
+  <p><strong> Parking Duration: </strong> <%= @trip.hours %> hours <%= @trip.minutes %> minutes </p>
   <div class="text-center mt-5">
-  <%= link_to "Return to home", root_path, class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
+    <%= link_to "Return to home", root_path, class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
   </div>
 </div>
