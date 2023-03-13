@@ -76,7 +76,7 @@ export default class extends Controller {
       for (const step of steps) {
         tripInstructions += `<li>${step.maneuver.instruction}</li>`;
       }
-
+      console.log(data)
       instructions.insertAdjacentHTML('beforeend', `<p><strong>🚗 Trip duration: ${Math.floor(data.duration / 60)} min </strong></p> <ol>${tripInstructions}</ol>`);
     }
   }

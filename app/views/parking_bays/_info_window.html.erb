@@ -1,10 +1,21 @@
-<% chomp_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
-<div class="p-1">
-  <h2><%= parking_bay.address.sub(chomp_section,'') %></h2>
-  <div class="">
-  <p class='pt-1'>This parking space is <%= parking_bay.occupied ? "unavailable" : "available" %></p>
-    <% if !parking_bay.occupied %>
-      <p class="no-underline hover:underline"><strong><%= link_to 'See directions ➜', parking_bay_path(parking_bay)%></strong></p>
-    <% end %>
+<% sub_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
+<% short_address = parking_bay.address.sub(sub_section,'') %>
+<% street_address = short_address.sub(/,[^,]+$/, '') %>
+<% address_area = short_address.sub(/.+, /,'') %>
+
+<div class="inline-flex flex-col space-y-2.5 items-center justify-center py-2 px-4 bg-white rounded-2xl">
+  <% if parking_bay.occupied %>
+    <p class='p-2 text-gray-700 bg-red-500 rounded-full text-lg text-sm font-semibold text-white shadow-sm'>Unavailable</p>
+  <% else %>
+    <p class='p-2 text-gray-700 bg-lime-500 rounded-full text-lg text-sm font-semibold text-white shadow-sm'>Available</p>
+  <% end %>
+  <div class='w-full items-center justify-center'>
+    <p class="font-semibold text-lg"><%= street_address %></p>
+    <p class="text-sm text-gray-700"><%= address_area %></p>
+  </div>
+  <div class="flex flex-col items-center justify-end w-full">
+    <div class="inline-flex space-x-2.5 items-center justify-center p-2 bg-black rounded-lg">
+      <p class="text-white"><strong><%= link_to 'Directions ➜', parking_bay_path(parking_bay)%></strong></p>
+    </div>
   </div>
 </div>
