@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
+    @parking_bay = ParkingBay.find(params[:parking_bay_id])
   end
 
   def new
@@ -23,6 +24,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:timer)
+    params.require(:trip).permit(:hours, :minutes)
   end
 end
