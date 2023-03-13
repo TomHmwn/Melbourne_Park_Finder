@@ -19,6 +19,6 @@
   <% end %>
   </p>
   <div class="text-center mt-5">
-    <%= link_to "Return to home", root_path, class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
+    <%= link_to "Directions to your car", @parking_bay.directions_link, target:'_blank', class: 'px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full' %>
   </div>
 </div>

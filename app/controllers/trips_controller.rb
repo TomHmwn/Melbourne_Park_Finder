@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
+    @parking_bay = ParkingBay.find(params[:parking_bay_id])
   end
 
   def new
