@@ -24,6 +24,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:timer)
+    params.require(:trip).permit(:hours, :minutes)
   end
 end
