@@ -105,10 +105,10 @@ export default class extends Controller {
         document
           .getElementById("base-timer-path-remaining")
           .classList.add(alert.color);
-        // if (alertShown === false) {
-        //   window.alert("Warning! Your parking expires in 5 minutes.");
-        //   alertShown = true;
-        // }
+        if (alertShown === false) {
+          window.alert("Warning! Your parking expires in 5 minutes.");
+          alertShown = true;
+        }
       } else if (timeLeft <= warning.threshold) {
         document
           .getElementById("base-timer-path-remaining")
@@ -116,10 +116,10 @@ export default class extends Controller {
         document
           .getElementById("base-timer-path-remaining")
           .classList.add(warning.color);
-        // if (warningShown === false) {
-        //   window.alert("Warning! Your parking expires in 15 minutes.");
-        //   warningShown = true;
-        // }
+        if (warningShown === false) {
+          window.alert("Warning! Your parking expires in 15 minutes.");
+          warningShown = true;
+        }
       }
     }
 
