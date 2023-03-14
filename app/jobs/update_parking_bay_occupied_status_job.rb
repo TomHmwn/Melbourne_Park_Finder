@@ -14,7 +14,7 @@ class UpdateParkingBayOccupiedStatusJob < ApplicationJob
       # puts matching_locallysaved_parking_bay
       # record['fields']['status'] == 'Present' ? incoming_occupied_value = true : incoming_occupied_value = false
       occupied = (record['fields']['status'] == 'Present')
-      next unless occupied != matching_locallysaved_parking_bay.occupied
+
 
       # matching_locallysaved_parking_bay.occupied = occupied
       # matching_locallysaved_parking_bay.sensorLastUpdated = record['fields']['last_updated']
