@@ -35,7 +35,7 @@
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     <!-- The data was most recently updated at <%= parking_bay.sensorLastUpdated %> -->
                     <%# raise %>
-                    The data was last updated at <%= zone.at(parking_bay.sensorLastUpdated).strftime('%Y %b %e %l: %p') %>
+                    The data was last updated at <%= zone.at(parking_bay.sensorLastUpdated).strftime('%Y %b %e %l:%M %p') %>.
                 </p>
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     Made by Tom, Viet, Andy, and Max for Le Wagon 2023 🚗 💨
