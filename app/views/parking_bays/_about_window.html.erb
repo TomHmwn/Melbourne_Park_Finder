@@ -7,6 +7,8 @@
   </svg>
 </button>
 
+<% zone = ActiveSupport::TimeZone.new("Melbourne") %>
+
 <!-- Main modal -->
 <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
@@ -29,6 +31,11 @@
                 </p>
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     The data is updated everytime the homepage is loaded, so you can be sure that the data is up to date. The app is still in development, so if you have any suggestions or feedback, please feel free to contact our team on Github!
+              </p>
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    <!-- The data was most recently updated at <%= parking_bay.sensorLastUpdated %> -->
+                    <%# raise %>
+                    The data was last updated at <%= zone.at(parking_bay.sensorLastUpdated).strftime('%Y %b %e %l:%M %p') %>.
                 </p>
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     Made by Tom, Viet, Andy, and Max for Le Wagon 2023 🚗 💨

@@ -2,11 +2,10 @@
       data-map-parking-bays-value="<%= @geojson.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
       class="relative">
-      <%# map %>
       <div style="width: 100%; height:98vh;" data-map-target="map"></div>
-      <%# drawer %>
       <div class="absolute bottom-16 left-3">
-        <%= render "about_window" %>
+        <%= render "about_window", parking_bay: @parking_bays.first %>
       </div>
+      <%# raise %>
       <%= render "drawer"%>
 </div>
