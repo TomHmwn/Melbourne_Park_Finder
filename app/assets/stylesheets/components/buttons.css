@@ -11,5 +11,5 @@
 }
 
 .filter-radio-small {
-  @apply select-none cursor-pointer bg-gray-200 text-blue-400 font-semibold border-2  py-2 px-4 transition-colors duration-200 ease-in-out peer-checked:bg-blue-400 peer-checked:text-white dark:text-slate-800;
+  @apply select-none cursor-pointer bg-gray-200 text-blue-400 font-semibold border-2 py-2 px-4 transition-colors duration-200 ease-in-out peer-checked:bg-blue-400 peer-checked:text-white dark:text-slate-800;
 }
