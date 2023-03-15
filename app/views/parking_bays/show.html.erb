@@ -23,13 +23,14 @@
       </div>
   </div>
 
-  <div class="w-screen fixed bottom-0 left-0 p-4 sm:p-6 flex flex-col items-end">
+  <div class="w-screen fixed bottom-0 left-0 p-4 sm:p-6 flex flex-col items-center sm:items-end ">
+    <div class="w-full flex justify-end">
+      <p id="duration" class=" py-0.5 px-3 bg-amber-100 rounded-full text-amber-600 max-w-fit mr-6 mb-2">Calculating Journey...</p>
+    </div>
 
-    <p id="duration" class=" py-0.5 px-3 bg-amber-100 rounded-full text-amber-600 max-w-fit mr-8 mb-4">Calculating Journey...</p>
+    <div class="w-full flex justify-center items-centers bg-transparent p-1 rounded-md max-w-fit sm:max-w-sm">
 
-    <div class="w-full flex justify-center bg-transparent p-1 rounded-md max-w-fit sm:max-w-sm">
-
-     <%= link_to new_parking_bay_trip_path(@parking_bay), class:'bg-stone-400 text-white-700 py-3 px-6 rounded-l-lg font-base' do %>
+     <%= link_to new_parking_bay_trip_path(@parking_bay), class:'bg-stone-600 text-white hover:bg-stone-800 py-3 px-6 rounded-l-lg text-base' do %>
         <div class=" flex justify-center ">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -37,7 +38,7 @@
         </div>
 
       <% end %>
-      <%= link_to  @parking_bay.directions_link, target:'_blank', class: 'bg-sky-50 py-3 px-6 rounded-r-lg text-black font-base' do %>
+      <%= link_to  @parking_bay.directions_link, target:'_blank', class: 'bg-green-100 hover:bg-green-200 text-black py-3 px-6 rounded-r-lg text-base' do %>
       <div class="flex justify-center">
         Start Journey&nbsp
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

@@ -14,45 +14,45 @@
    </div>
 
 
-    <form class="text-center flex flex-col items-center mt-4" data-action="submit->map#getIso" data-map-target="form">
-      <div class="flex w-full justify-around mb-4 ">
-        <div class= "text-md font-semibold text-gray-900 dark:text-white mb-2">Filter based from</div>
+    <form class="text-start flex flex-col items-center mt-4" data-action="submit->map#getIso" data-map-target="form">
+      <div class="flex w-full justify-around mb-8 ">
+      <div class= "text-sm font-semibold text-gray-900 dark:text-white mb-4">Filter based from</div>
         <div class="flex">
           <div class="">
             <input type="radio" id="geocoder" class="peer hidden " value="geocoder" name="location" checked/>
-            <label for="geocoder" class="filter-radio-small rounded-l-lg">Address</label>
+            <label for="geocoder" class="toggle-switch rounded-l-lg ">Address</label>
           </div>
           <div class="">
             <input type="radio" id="user" class="peer hidden " value="user" name="location"/>
-            <label for="user" class="filter-radio-small rounded-r-lg">Your location</label>
+            <label for="user" class="toggle-switch rounded-r-lg">Your location</label>
           </div>
         </div>
       </div>
       <div class="flex w-3/4 justify-evenly">
         <div>
           <input type="radio" id="walking" class="peer hidden" value="walking" name="profile"/>
-          <label for="walking" class="filter-radio">Walking</label>
+          <label for="walking" class="filter-radio rounded-lg">Walking</label>
         </div>
         <div>
           <input type="radio" id="cycling" class="peer hidden" value="cycling" name="profile"/>
-          <label for="cycling" class="filter-radio">Cycling</label>
+          <label for="cycling" class="filter-radio rounded-lg">Cycling</label>
         </div>
-        <div>
+        <div class="">
           <input type="radio" id="driving" class="peer hidden" value="driving" name="profile"/>
-          <label for="driving" class="filter-radio">Driving</label>
+          <label for="driving" class="filter-radio ">Driving</label>
         </div>
       </div>
       <div data-controller='slider' class='w-5/6 flex flex-col items-center justify-center'>
         <div class="flex flex-col w-5/6 m-8">
           <label for="default-range" class="place-self-start mb-2 text-lg font-medium text-gray-900 dark:text-white mb-4">Minutes</label>
-          <div id="range-value" data-slider-target="output" class="text-zinc-500 text-xl font-bold mb-2"></div>
+          <div id="range-value" data-slider-target="output" class="text-center text-zinc-500 text-lg text-base mb-2">0</div>
           <input data-action="input->slider#display" name="minutes" id="default-range" type="range" min="1" max="20" value='1' step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
         </div>
         <div class="mb-4 flex justify-evenly w-5/6">
-          <button data-action='click->slider#reset' class="bg-slate-300 hover:bg-slate-400 text-blue-400 hover:bg-slate-400 font-bold py-4 px-12 rounded-full" type="reset">
+          <button data-action='click->slider#reset' class="bg-stone-600 text-white hover:bg-stone-800 text-base py-2 px-6 rounded-lg" type="reset">
             Reset
           </button>
-          <button class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full" type="submit">
+          <button class="bg-green-100 hover:bg-green-50 text-black text-base py-2 px-6 rounded-lg font-semibold" type="submit">
             Apply
           </button>
         </div>

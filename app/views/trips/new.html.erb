@@ -1,4 +1,4 @@
-<div class="w-full mx-auto flex flex-wrap h-screen bg-zinc-900">
+<div class="w-full mx-auto flex flex-col h-screen bg-zinc-900">
     <div class="flex justify-between w-full h-fit py-2 text-white">
       <%= link_to parking_bay_path(@parking_bay), class:"w-fit" do %>
       <div class="h-8 w-8 overflow-hidden flex items-center ml-4 mt-2">
@@ -8,26 +8,34 @@
       </div>
       <% end %>
     </div>
-    <div class="p-5 text-xl mx-auto place-self-start">
-        <div id="new-timer" class ="flex justify-center items-center drop-shadow-2xl rounded-full" ></div>
-          <div id="timer-form" class="hidden" >
-           <%= simple_form_for [@parking_bay, @trip] do |f| %>
-            <div class="form-inline">
-              <div class="form-inputs inline-inputs text-center bg-opactiy-100 text-white">
-                <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
-                <%= f.error :hours, class:"text-white" %>
-                <span class="inline-label">:</span>
-                <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
-                <%= f.error :minutes, class:"text-white" %>
+    <div class="text-xl mx-auto flex flex-col justify-center items-center justify-start">
+          <div id="new-timer"></div>
+            <div id="timer-form" class="hidden">
+      <%= simple_form_for [@parking_bay, @trip] do |f| %>
+              <div class="form-inline">
+                <div class="form-inputs inline-inputs text-center text-white">
+                  <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
+                  <%= f.error :hours, class:"text-white" %>
+                  <span class="inline-label">:</span>
+                  <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
+                  <%= f.error :minutes, class:"text-white" %>
+                </div>
               </div>
-              <div class="form-actions">
-                <%= f.error :base %>
-                <%= f.button :submit, "Start Timer", class:"px-4 py-2 font-semibold bg-green-400 text-white rounded-full"%>
-              </div>
-            </div>
-          <% end %>
+        <div class="w-full flex justify-between">
+          <div class="form-action p-1 border border-zinc-700 w-fit h-fit rounded-full">
+            <%= f.error :base %>
+            <%= f.button :button, 'Cancel', type: :reset, class: 'w-20 h-20 font-light bg-zinc-700 text-gray-500 rounded-full' %>
+          </div>
+          <div class="form-action p-1 border border-emerald-900 w-fit h-fit rounded-full">
+            <%= f.error :base %>
+            <%= f.button :submit, "Start", class:"w-20 h-20 font-light bg-emerald-900 text-green-200 rounded-full"%>
+          </div>
         </div>
-
-      <br>
     </div>
+          </div>
+
+      <% end %>
+
+
+    <hr class="text-slate-800 w-96 mx-auto mt-8">
 </div>
