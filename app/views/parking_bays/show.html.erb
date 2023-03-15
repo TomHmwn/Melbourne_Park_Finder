@@ -27,7 +27,7 @@
 
     <div class="w-full flex justify-center bg-transparent p-1 rounded-md max-w-fit sm:max-w-sm">
 
-     <%= link_to new_parking_bay_trip_path(@parking_bay), class:'bg-blue-200 text-blue-700 py-3 px-6 rounded-l-full font-semibold' do %>
+     <%= link_to new_parking_bay_trip_path(@parking_bay), class:'bg-stone-400 text-white-700 py-3 px-6 rounded-l-lg font-base' do %>
         <div class=" flex justify-center ">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -35,7 +35,7 @@
         </div>
 
       <% end %>
-      <%= link_to  @parking_bay.directions_link, target:'_blank', class: 'bg-blue-500 py-3 px-6 rounded-r-full text-white font-semibold' do %>
+      <%= link_to  @parking_bay.directions_link, target:'_blank', class: 'bg-sky-50 py-3 px-6 rounded-r-lg text-black font-base' do %>
       <div class="flex justify-center">
         Start Journey
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

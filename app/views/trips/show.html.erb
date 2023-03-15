@@ -1,24 +1,28 @@
-<input type="hidden" id="trip-hour" value="<%= @trip.hours.to_i %>">
-<input type="hidden" id="trip-minute" value="<%= @trip.minutes.to_i %>">
+<div class="text-white bg-zinc-900 h-screen">
+  <input type="hidden" id="trip-hour" value="<%= @trip.hours.to_i %>">
+  <input type="hidden" id="trip-minute" value="<%= @trip.minutes.to_i %>">
 
-<% zone = ActiveSupport::TimeZone.new("Melbourne") %>
+  <% zone = ActiveSupport::TimeZone.new("Melbourne") %>
 
-<div class="m-5 text-center text-3xl"><strong>Time left on your park: </strong></div>
-<div data-controller="timer" id="app" class ="flex justify-center items-center">
-</div>
-<div class="container mx-auto text-center mt-5 p-4 ">
-<% sub_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
-<% short_address = @trip.parking_bay.address.sub(sub_section,'') %>
-  <p><strong> Address: </strong> <%= short_address %> </p>
-  <p><strong> Parking Hours: </strong> <%= zone.at(@trip.created_at).strftime('%l:%M %p') %> - <%= (zone.at(@trip.created_at) + ((@trip.minutes * 60)+(@trip.hours * 3600))).strftime('%l:%M %p') %> </p>
-  <p><strong> Parking Duration: </strong>
-  <% if @trip.hours <= 0 %>
-   <%= @trip.minutes %> minutes
-  <% else %>
-    <%= @trip.hours %> hours and <%= @trip.minutes %> minutes
-  <% end %>
-  </p>
-  <div class="text-center mt-5">
-    <%= link_to "Directions to your car", @parking_bay.directions_link, target:'_blank', class: 'px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full' %>
+  <% sub_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
+  <% short_address = @trip.parking_bay.address.sub(sub_section,'') %>
+    <p class="text-center "><%= short_address %> </p>
+  <div data-controller="timer" id="app" class ="flex justify-center items-center">
+  </div>
+  <div class="container mx-auto text-center mt-5 p-4 border-2 rounded-lg bg-slate-200">
+    <p><strong> Parking Hours: </strong> <%= zone.at(@trip.created_at).strftime('%l:%M %p') %> - <%= (zone.at(@trip.created_at) + ((@trip.minutes * 60)+(@trip.hours * 3600))).strftime('%l:%M %p') %> </p>
+    <p><strong> Parking Duration: </strong>
+    <% if @trip.hours <= 0 %>
+    <%= @trip.minutes %> minutes
+    <% else %>
+      <%= @trip.hours %> hours and <%= @trip.minutes %> minutes
+    <% end %>
+    </p>
+    <div class="text-center mt-5">
+      <%= link_to "Directions to your car", @parking_bay.directions_link, target:'_blank', class: 'px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full' %>
+    </div>
+    <div class="text-center mt-5">
+      <%= link_to "Back to home", root_path, class: 'px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full' %>
+    </div>
   </div>
 </div>

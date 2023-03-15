@@ -1,18 +1,24 @@
-
-<div class="container mx-auto text-center m-3 p-5 ">
-  <h1 class=" text-3xl"> Parking Timer ⏰ </h1>
-    <div class="p-5 text-xl ">
-      <p> Enter your desired parking time: </p>
-        <div id="new-timer" class ="flex justify-center items-center" ></div>
+<div class="w-full mx-auto flex flex-wrap h-screen bg-zinc-900">
+    <div class="flex justify-between w-full h-fit py-2 text-white">
+      <%= link_to parking_bay_path(@parking_bay), class:"w-fit" do %>
+      <div class="h-8 w-8 overflow-hidden flex items-center ml-4 mt-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+        </svg>
+      </div>
+      <% end %>
+    </div>
+    <div class="p-5 text-xl mx-auto place-self-start">
+        <div id="new-timer" class ="flex justify-center items-center drop-shadow-2xl rounded-full" ></div>
           <div id="timer-form" class="hidden" >
            <%= simple_form_for [@parking_bay, @trip] do |f| %>
             <div class="form-inline">
-              <div class="form-inputs inline-inputs">
-                <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px', value: '00'} %>
-                <%= f.error :hours %>
+              <div class="form-inputs inline-inputs text-center bg-opactiy-100 text-white">
+                <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
+                <%= f.error :hours, class:"text-white" %>
                 <span class="inline-label">:</span>
-                <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px', value: '00'} %>
-                <%= f.error :minutes %>
+                <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, class:"appearance-none bg-transparent" %>
+                <%= f.error :minutes, class:"text-white" %>
               </div>
               <div class="form-actions">
                 <%= f.error :base %>
@@ -20,9 +26,8 @@
               </div>
             </div>
           <% end %>
-          </div>
+        </div>
 
       <br>
-      <%= link_to "Return to map", parking_bay_path(@parking_bay), class:"px-4 py-2 font-semibold bg-cyan-500 text-white rounded-full" %>
     </div>
 </div>
