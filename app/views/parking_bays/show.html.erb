@@ -6,8 +6,10 @@
   <div class="instructions-container w-full flex flex-col item-center justify-between" >
   <div class="w-full bg-transparent p-4 sm:p-6 flex w-full max-w-md">
       <%= link_to root_path, class: 'no-underline hover:underline mt-2 text-white text-4xl' do %>
-        <div class="h-8 w-8 overflow-hidden bg-white rounded-full shadow-md relative">
-          <lottie-player src="https://assets7.lottiefiles.com/datafiles/gIaq0j0WzN5ehEROgKz2E4lL8FDEWMYHxTffwEgi/hamburgerToBackArrow.json" background="transparent"  speed="1"  style="width: 100px; height: 100px;" class="p-1 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 absolute"loop autoplay></lottie-player>
+        <div class="h-8 w-8 overflow-hidden bg-white rounded-full shadow-md relative flex justify-center items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-black">
+            <path fill-rule="evenodd" d="M7.793 2.232a.75.75 0 01-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 010 10.75H10.75a.75.75 0 010-1.5h2.875a3.875 3.875 0 000-7.75H3.622l4.146 3.957a.75.75 0 01-1.036 1.085l-5.5-5.25a.75.75 0 010-1.085l5.5-5.25a.75.75 0 011.06.025z" clip-rule="evenodd" />
+          </svg>
         </div>
 
       <% end %>
@@ -31,13 +33,13 @@
         <div class=" flex justify-center ">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg> Start Timer
+          </svg> &nbspStart Timer
         </div>
 
       <% end %>
       <%= link_to  @parking_bay.directions_link, target:'_blank', class: 'bg-blue-500 py-3 px-6 rounded-r-full text-white font-semibold' do %>
       <div class="flex justify-center">
-        Start Journey
+        Start Journey&nbsp
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
