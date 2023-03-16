@@ -114,7 +114,7 @@ export default class extends Controller {
 
       const duration = document.getElementById('duration');
       duration.innerHTML = '';
-      duration.insertAdjacentHTML('afterbegin', `${Math.floor(data.duration / 60)} min`);
+      duration.insertAdjacentHTML('afterbegin', ` ETA: ${Math.floor(data.duration / 60)} min`);
     }
     const popup = new mapboxgl.Popup().setText(this.parkingBayValue.address);
 

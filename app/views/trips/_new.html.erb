@@ -1,0 +1,29 @@
+
+<%= turbo_frame_tag dom_id(@parking_bay, :timer) do %>
+
+  <div class="text-xl mx-auto flex flex-col justify-center items-center justify-start">
+
+          <div id="timer-form">
+            <%= simple_form_for [trip.parking_bay, trip] do |f| %>
+              <div class="relative h-56 w-56 flex items-center justify-center">
+                <div id="new-timer" class="absolute inset-0"></div>
+                <div class="absolute inset-y form-inputs inline-inputs text-center grid grid-cols-2 gap-2">
+                  <%= f.input :hours, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, wrapper_html: {class: 'mb-0'}, label_html: {class: 'text-sm text-gray-400 block'}, label: 'hrs', class:"appearance-none bg-transparent" %>
+                  <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, wrapper_html: {class: 'mb-0'}, label_html: {class: 'text-sm text-gray-400 block'}, label: 'mins', class:"appearance-none bg-transparent" %>
+                </div>
+              </div>
+              <div class="w-full flex justify-between relative mt-6 z-10">
+                <div class="form-action p-1 border border-zinc-700 w-fit h-fit rounded-full">
+                  <%= f.error :base %>
+                  <%= f.button :button, 'Cancel', type: :reset, class: 'w-20 h-20 font-light bg-zinc-700 text-gray-500 rounded-full' %>
+                </div>
+                <div class="form-action p-1 border border-emerald-900 w-fit h-fit rounded-full">
+                  <%= f.error :base %>
+                  <%= f.button :submit, "Start", class:"w-20 h-20 font-light bg-emerald-900 text-green-200 rounded-full"%>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+<% end %>

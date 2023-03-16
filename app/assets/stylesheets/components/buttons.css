@@ -7,9 +7,9 @@
 }
 
 .filter-radio {
-  @apply select-none cursor-pointer bg-gray-200 text-blue-400 font-semibold border-2 border-gray-200 rounded-full py-2 px-4 transition-colors duration-200 ease-in-out peer-checked:bg-blue-400 peer-checked:text-white dark:text-slate-800 peer-checked:border-gray-200;
+  @apply select-none cursor-pointer px-4 py-2 bg-stone-100 rounded-lg font-light w-auto shadow-sm transition-colors duration-200 ease-in-out peer-checked:bg-stone-600 peer-checked:text-white dark:text-slate-800 peer-checked:border-gray-200;
 }
 
-.filter-radio-small {
-  @apply select-none cursor-pointer bg-gray-200 text-blue-400 font-semibold border-2 py-2 px-4 transition-colors duration-200 ease-in-out peer-checked:bg-blue-400 peer-checked:text-white dark:text-slate-800;
+.toggle-switch {
+  @apply select-none cursor-pointer bg-stone-100 text-black text-sm font-light py-2 px-8 transition-colors duration-200 ease-in-out peer-checked:bg-stone-600 peer-checked:text-white dark:text-slate-800;
 }

@@ -15,6 +15,7 @@ class TripsController < ApplicationController
     @trip.parking_bay = @parking_bay
 
     if @trip.save!
+      # render "trips/show", trip: @trip
       redirect_to parking_bay_trip_path(@parking_bay, @trip)
     else
       render :new, status: :unprocessable_entity, notice: 'Invalid input!'

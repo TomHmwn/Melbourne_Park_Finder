@@ -7,5 +7,5 @@
 }
 
 .mapboxgl-popup-close-button {
-  @apply pr-2;
+  @apply pr-2 text-2xl;
 }

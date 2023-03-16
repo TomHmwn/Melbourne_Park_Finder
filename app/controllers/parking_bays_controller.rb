@@ -15,6 +15,8 @@ class ParkingBaysController < ApplicationController
 
   def show
     @parking_bay = ParkingBay.find(params[:id])
+    @trip = Trip.new
+    @trip.parking_bay = @parking_bay
   end
 
   def filter
