@@ -237,7 +237,9 @@ export default class extends Controller {
      .then(async (data) => {
         this.map.getSource('iso').setData(data);
         this.setBounds(data.features[0].geometry.coordinates[0])
+        window.drawers.forEach((drawer) => { drawer.hide()})
       });
+
   }
 
   setBounds = (coordinates) => {

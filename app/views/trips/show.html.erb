@@ -1,19 +1,20 @@
-<div class="text-white bg-zinc-900 h-screen">
-  <input type="hidden" id="trip-hour" value="<%= @trip.hours.to_i %>">
-  <input type="hidden" id="trip-minute" value="<%= @trip.minutes.to_i %>">
-
-  <% zone = ActiveSupport::TimeZone.new("Melbourne") %>
-
-  <% sub_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
-  <% short_address = @trip.parking_bay.address.sub(sub_section,'') %>
+  <%= turbo_frame_tag dom_id(@trip.parking_bay, :timer) do %>
+<div class="text-white bg-stone-200 h-fit">
   <br>
-  <div data-controller="timer" id="app" class ="flex justify-center items-center mt-8">
-  </div>
-  <div class="w-96 mx-auto text-center mt-5 p-4 rounded-lg bg-neutral-800">
-    <p class="w-full flex justify-between opacity-70 mb-2">Address: <strong class="text-end"><%= short_address %></strong> </p>
+    <input type="hidden" id="trip-hour" value="<%= @trip.hours.to_i %>">
+    <input type="hidden" id="trip-minute" value="<%= @trip.minutes.to_i %>">
 
-    <p class="w-full flex justify-between opacity-70 mb-2"> Parking Hours:<strong> <%= zone.at(@trip.created_at).strftime('%l:%M %p') %> - <%= (zone.at(@trip.created_at) + ((@trip.minutes * 60)+(@trip.hours * 3600))).strftime('%l:%M %p') %> </strong></p>
-    <p class="w-full flex justify-between opacity-70 mb-2">Parking Duration:
+    <% zone = ActiveSupport::TimeZone.new("Melbourne") %>
+
+    <% sub_section = /, Melbourne, City of Melbourne, Victoria, \d{3,6}, Australia/ %>
+    <% short_address = @trip.parking_bay.address.sub(sub_section,'') %>
+    <div data-controller="timer" id="app" class ="flex justify-center items-center mt-8">
+    </div>
+
+  <div class="w-96 mx-auto text-center mt-5 p-4 rounded-lg bg-stone-200">
+    <p class="w-full flex justify-between opacity-70 mb-2 text-black">Address: <strong class="text-end"><%= short_address %></strong> </p>
+
+    <p class="w-full flex justify-between opacity-70 mb-2 text-black">Parking Duration:
     <strong>
     <% if @trip.hours <= 0 %>
     <%= @trip.minutes %> minutes
@@ -24,9 +25,9 @@
     </p>
     <div class="mt-5 flex justify-between items-end">
       <div class="text-center mt-5">
-        <%= link_to "Home", root_path, class: 'text-white flex justify-between w-fit border-2 rounded-lg py-2 px-4 hover:bg-zinc-500' %>
+        <%= link_to "Home", root_path, class: 'text-black flex justify-between w-fit border-2 border-zinc-500 rounded-lg py-2 px-4 hover:bg-zinc-500' %>
       </div>
-      <%= link_to @parking_bay.directions_link, target:'_blank', class: 'text-white flex justify-between w-fit border-2 rounded-lg py-2 px-4 hover:bg-zinc-500 h-fit' do %>
+      <%= link_to @trip.parking_bay.directions_link, target:'_blank', class: 'text-black flex justify-between w-fit border-2 border-zinc-500 rounded-lg py-2 px-4 hover:bg-zinc-500 h-fit' do %>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
@@ -39,3 +40,4 @@
     </div>
   </div>
 </div>
+    <% end %>

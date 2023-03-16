@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BottomModalController from "./bottom_modal_controller"
+application.register("bottom-modal", BottomModalController)
+
 import DirectionController from "./direction_controller"
 application.register("direction", DirectionController)
 
