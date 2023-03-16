@@ -12,7 +12,7 @@
                   <%= f.input :minutes, :input_html => {:maxlength =>3,:style=> 'width: 50px; color:black;', value: '00'}, wrapper_html: {class: 'mb-0'}, label_html: {class: 'text-sm text-gray-400 block'}, label: 'mins', class:"appearance-none bg-transparent" %>
                 </div>
               </div>
-              <div class="w-full flex justify-between mt-6">
+              <div class="w-full flex justify-between relative mt-6 z-10">
                 <div class="form-action p-1 border border-zinc-700 w-fit h-fit rounded-full">
                   <%= f.error :base %>
                   <%= f.button :button, 'Cancel', type: :reset, class: 'w-20 h-20 font-light bg-zinc-700 text-gray-500 rounded-full' %>
@@ -21,7 +21,7 @@
                   <%= f.error :base %>
                   <%= f.button :submit, "Start", class:"w-20 h-20 font-light bg-emerald-900 text-green-200 rounded-full"%>
                 </div>
-                </div>
+              </div>
             <% end %>
           </div>
         </div>
