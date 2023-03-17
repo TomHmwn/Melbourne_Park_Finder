@@ -10,7 +10,7 @@ export default class extends Controller {
   connect() {
     console.log(this.drawerTarget)
     const options = {
-      placement: 'right',
+      // placement: 'right',
       backdrop: true,
       bodyScrolling: false,
       edge: true,
