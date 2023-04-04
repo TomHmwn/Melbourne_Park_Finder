@@ -2,7 +2,7 @@
 
 Melbourne Park Finder is a web application designed to help users find available on-street parking spaces in Melbourne's CBD. This app was developed as part of a collaborative project during our Le Wagon journey, using the City of Melbourne's open database, Mapbox GL JS, and other nifty features. Our app was built with the intent to be used as a Progressive Web Application (PWA), providing a seamless user experience. <br>
 <br>
-A live demo of our product can be seen here or you can view the live version [here](https://melbourne-park-finder.herokuapp.com/). 
+A live demo of our product can be seen [here](https://youtu.be/s-Lc72NtpFg?t=1127) or you can view the live version [here](https://melbourne-park-finder.herokuapp.com/). 
 
 ## Features 
 * Real-time availability of on-street parking spaces with sensors.
