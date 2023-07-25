@@ -74,7 +74,7 @@ URL = "https://data.melbourne.vic.gov.au/api/records/1.0/search/?dataset=on-stre
 puts "parsing Melbourne parking data..."
 
 total_rows = 4390
-batch_size = 100
+batch_size = 50
 num_batches = (total_rows / batch_size.to_f).ceil
 
 (0...num_batches).each do |batch_number|
