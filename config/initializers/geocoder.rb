@@ -10,7 +10,7 @@ Geocoder.configure(
   # https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
   # api_key: nil,               # API key for geocoding service
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
-  api_key: 'pk.eyJ1IjoidGhtd24iLCJhIjoiY2xlMjYzamZxMDZhazN2bWpkcW5ndXViaCJ9.3iFLAmo7G0EkKsmq1_QM2w',
+  api_key: ENV['MAPBOX_API_KEY'],
   # Exceptions that should not be rescued by default
   # (if you want to implement custom error handling);
   # supports SocketError and Timeout::Error
