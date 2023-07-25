@@ -88,7 +88,7 @@ num_batches = (total_rows / batch_size.to_f).ceil
   puts "Creating Parking Bays for batch #{batch_number + 1}/#{num_batches}"
   create_parking_bays(batch_records)
 
-  sleep(1) # Sleep for 1 second between batches to avoid overwhelming the API
+  sleep(2) # Sleep for 1 second between batches to avoid overwhelming the API
 end
 
 puts "Finished!"
