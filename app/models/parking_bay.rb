@@ -1,7 +1,9 @@
 class ParkingBay < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude,
-  :address => :address
+    address: :address # Specify the attribute where the reverse geocoded address will be stored
+
   after_validation :reverse_geocode
+
   has_one :trip
 
   def coordinates
