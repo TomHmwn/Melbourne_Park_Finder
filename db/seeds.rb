@@ -2,20 +2,17 @@ require "open-uri"
 
 # Function to create parking bays from a batch of records
 def create_parking_bays(records)
-  begin
-    records.each do |record|
-      occupied = (record["fields"]["status_description"] == "Present")
-      ParkingBay.create!(
-        occupied: occupied,
-        longitude: record["fields"]["location"][1],
-        latitude: record["fields"]["location"][0],
-        sensorLastUpdated: record["fields"]["lastupdated"],
-        st_marker_id: record["fields"]["parkingbay_id"]
-      )
-    end
+  records.each do |record|
+    occupied = (record["fields"]["status_description"] == "Present")
+    ParkingBay.create!(
+      occupied: occupied,
+      longitude: record["fields"]["location"][1],
+      latitude: record["fields"]["location"][0],
+      sensorLastUpdated: record["fields"]["lastupdated"],
+      st_marker_id: record["fields"]["parkingbay_id"]
+    )
   end
 end
-
 
 # clearing the database
 puts "Cleaning database"
@@ -26,7 +23,9 @@ URL = "https://data.melbourne.vic.gov.au/api/records/1.0/search/?dataset=on-stre
 
 puts "parsing Melbourne parking data..."
 
-total_rows = 4390
+# JSON.parse(URI.open(URL).read)['nhits']
+# Use of URI.open was giving robocop security error
+total_rows = JSON.parse(URI.parse(URL).read)['nhits']
 batch_size = 50
 num_batches = (total_rows / batch_size.to_f).ceil
 
@@ -35,7 +34,7 @@ num_batches = (total_rows / batch_size.to_f).ceil
   api_url = "#{URL}&start=#{start_row}"
 
   puts "Fetching batch #{batch_number + 1}/#{num_batches}"
-  html = URI.open(api_url).read
+  html = URI.parse(api_url).read
   batch_records = JSON.parse(html)["records"]
 
   puts "Creating Parking Bays for batch #{batch_number + 1}/#{num_batches}"
