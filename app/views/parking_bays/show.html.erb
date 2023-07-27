@@ -15,11 +15,8 @@
         <% end %>
 
       <div class="flex flex-col justify-center pl-2 grow pr-2">
-        <%# <input class="start bg-slate-200 rounded-lg w-64 py-2 mb-2 p-2 truncate" data-direction-target="start">hello</div>
-        <input  class="end bg-slate-200 rounded-lg w-64 py-2 p-2 truncate" data-direction-target="end"></div> %>
         <input type="text" id="disabled-input" aria-label="disabled input" class="mb-3 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" data-direction-target="start" value="" disabled>
         <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" data-direction-target="end" value="" disabled readonly>
-
       </div>
   </div>
 
@@ -39,15 +36,6 @@
     </div>
 
     <div class="w-full flex justify-center items-centers bg-transparent p-1 rounded-md max-w-full sm:max-w-sm">
-    <!--
-     <%= link_to new_parking_bay_trip_path(@parking_bay), class:'bg-stone-600 text-white hover:bg-stone-800 py-3 px-6 rounded-l-lg text-base' do %>
-        <div class=" flex justify-center ">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg> &nbspStart Timer
-        </div>
-      <% end %>
-      -->
       <%= link_to  @parking_bay.directions_link, target:'_blank', class: ' w-full bg-green-100 hover:bg-green-200 text-black py-3 px-6 rounded-lg text-base' do %>
       <div class="flex justify-center w-full">
         Start Journey&nbsp
@@ -58,11 +46,7 @@
       <% end %>
     </div>
   </div>
-
 </div>
-
-
-
 
 <!-- Main modal -->
 <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
@@ -82,19 +66,9 @@
       <!-- Modal body -->
       <div class="p-6 space-y-6">
         <div class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-          <!-- INSERT SIMPLE FORM FOR TIMER HERE -->
-
             <%= render "trips/new", trip:@trip%>
-
         </div>
       </div>
-      <!-- Modal footer -->
-      <!--
-      <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-        <button data-modal-hide="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
-        <button data-modal-hide="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
-      </div>
-      -->
     </div>
   </div>
 </div>
